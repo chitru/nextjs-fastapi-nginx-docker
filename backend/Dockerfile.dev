@@ -1,0 +1,18 @@
+FROM python:3.12.1-bookworm
+
+WORKDIR /backend
+
+RUN apt-get update && apt-get -y upgrade
+
+ENV PYTHONDONTWRITEBYTECODE 1
+
+ENV PYTHONUNBUFFERED 1
+
+COPY ./requirements.txt /backend/requirements.txt
+
+RUN pip install --no-cache-dir --upgrade -r /backend/requirements.txt
+
+COPY ./src /backend/app
+
+CMD [ "/bin/bash", "-c", "python3 /backend/app/migrate.py && uvicorn app.main:app --host 0.0.0.0 --port 4000"]
+

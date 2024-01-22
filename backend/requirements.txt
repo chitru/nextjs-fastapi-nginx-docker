@@ -1,0 +1,8 @@
+fastapi[all]
+python-jose[cryptography]
+passlib
+psycopg2-binary
+fastapi[all]
+python-jose[cryptography]
+passlib
+psycopg2-binary
